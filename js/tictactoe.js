@@ -6,29 +6,45 @@ const iGame = (function() {
         sq[i] = null;
     }
     let player1 = null;
-    let player2 = null;
     if (Math.floor(Math.random() * 2) < 1) {
         player1 = '0';
-        player2 = 'X';
     } else {
         player1 = 'X';
-        player2 = '0';
     }
     document.getElementById('status').innerText = `Current Player: ${player1}`
-    return { player1, player2, sq };
+    return { player1, sq };
 })();
 // game logic
 const playGame = (function() {
+    let xScore = 0;
+    let oScore = 0;
+    let player = iGame.player1;
+    let winnerMain = false;
     const resetGame = (function () {
         function resetGame() {
             for (let i = 0; i < 9; i++) {
                 iGame.sq[i] = null;
                 displayChoice(i, null);
+                winnerMain = false;
+                if (Math.floor(Math.random() * 2) < 1) {
+                    player = '0';
+                } else {
+                    player = 'X';
+                }
             }
         }
         const resetBtn = document.getElementById('reset-game-btn');
         resetBtn.addEventListener('click', function() {
             resetGame();
+        })
+    })();
+    const resetScore = (function() {
+        const resetScoreBtn = document.getElementById('reset-score-btn');
+        resetScoreBtn.addEventListener('click', function() {
+            xScore = 0;
+            oScore = 0;
+            document.getElementById('o-SCORE').innerText = `${oScore}`;
+            document.getElementById('x-SCORE').innerText = `${xScore}`;
         })
     })();
     function switchPlayer(currentPlayer) {
@@ -67,7 +83,17 @@ const playGame = (function() {
                 winner = iGame.sq[2];
             };
             if (winner) {
+                winnerMain = true;
                 winMessage(winner);
+                if (winner === '0') {
+                    oScore ++;
+                    document.getElementById('o-SCORE').innerText = `${oScore}`;
+                } else {
+                    xScore ++;
+                    document.getElementById('x-SCORE').innerText = `${xScore}`;
+                }
+                console.log(oScore);
+                console.log(xScore);
             } else {
                 updateStatus(current);
             }
@@ -91,10 +117,9 @@ const playGame = (function() {
             checkWin(player);
         }
     }
-    let player = iGame.player1;
     const body = document.querySelector('body');
     body.addEventListener('click', function(e) {
-        if (!checkWin(player)) {
+        if (!winnerMain) {
             switch (e.target.id) {
                 case 'board-01':
                     sqClick(0);

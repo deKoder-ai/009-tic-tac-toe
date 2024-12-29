@@ -1,4 +1,7 @@
 'use strict'
+
+
+
 // initialise game
 const iGame = (function() {
     let sq = [];
@@ -25,6 +28,8 @@ const playGame = (function() {
             for (let i = 0; i < 9; i++) {
                 iGame.sq[i] = null;
                 displayChoice(i, null);
+                let x = document.getElementById(`board-0${i + 1}`);
+                x.style.backgroundColor = '';
                 winnerMain = false;
                 if (Math.floor(Math.random() * 2) < 1) {
                     player = '0';
@@ -61,26 +66,45 @@ const playGame = (function() {
         function winMessage(winner) {
             document.getElementById('status').innerText = `${winner} Wins!`
         }
+        function fillWinSquares(a, b, c) {
+            let sq1 = document.getElementById(`board-0${a + 1}`)
+            let sq2 = document.getElementById(`board-0${b + 1}`)
+            let sq3 = document.getElementById(`board-0${c + 1}`)
+            sq1.style.backgroundColor = 'var(--sq-hover-col)';
+            sq2.style.backgroundColor = 'var(--sq-hover-col)';
+            sq3.style.backgroundColor = 'var(--sq-hover-col)';
+        }
         let winner = null;
         if (!iGame.sq.includes(null)) {
             document.getElementById('status').innerText = `It's a draw`
         } else {
+            // check first row
             if (iGame.sq[0] === iGame.sq[1] && iGame.sq[1] === iGame.sq[2]) {
                 winner = iGame.sq[0];
+                if (winner) {fillWinSquares(0, 1, 2)};
+            // check 2nd row
             } else if (iGame.sq[3] === iGame.sq[4] && iGame.sq[4] === iGame.sq[5]) {
                 winner = iGame.sq[3];
+                if (winner) {fillWinSquares(3, 4, 5);}
+            // check third row
             } else if (iGame.sq[6] === iGame.sq[7] && iGame.sq[7] === iGame.sq[8]) {
                 winner = iGame.sq[6];
+                if (winner) {fillWinSquares(6, 7, 8);}
             } else if (iGame.sq[0] === iGame.sq[3] && iGame.sq[3] === iGame.sq[6]) {
                 winner = iGame.sq[0];
+                if (winner) {fillWinSquares(0, 3, 6);}
             } else if (iGame.sq[1] === iGame.sq[4] && iGame.sq[4] === iGame.sq[7]) {
                 winner = iGame.sq[1];
+                if (winner) {fillWinSquares(1, 4, 7);}
             } else if (iGame.sq[2] === iGame.sq[5] && iGame.sq[5] === iGame.sq[8]) {
                 winner = iGame.sq[2];
+                if (winner) {fillWinSquares(2, 5, 8);}
             } else if (iGame.sq[0] === iGame.sq[4] && iGame.sq[4] === iGame.sq[8]) {
                 winner = iGame.sq[0];
+                if (winner) {fillWinSquares(0, 4, 8);}
             } else if (iGame.sq[2] === iGame.sq[4] && iGame.sq[4] === iGame.sq[6]) {
                 winner = iGame.sq[2];
+                if (winner) {fillWinSquares(2, 4, 6);}
             };
             if (winner) {
                 winnerMain = true;
@@ -92,8 +116,6 @@ const playGame = (function() {
                     xScore ++;
                     document.getElementById('x-SCORE').innerText = `${xScore}`;
                 }
-                console.log(oScore);
-                console.log(xScore);
             } else {
                 updateStatus(current);
             }

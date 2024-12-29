@@ -8,6 +8,7 @@
     --board-lines-col: rgba(128, 128, 128, 0.548);
     --board-lines-style: solid;
     --red: rgb(158, 40, 40);
+    --sq-hover-col: rgba(0, 0, 255, 0.048);
 }
 /* * {
     border: 1px dashed blue;
@@ -66,7 +67,7 @@ h2 {
 }
 
 .game-square:hover {
-    background-color: rgba(0, 0, 255, 0.048);
+    background-color: var(--sq-hover-col);
 }
 .game-square {
     border-radius: 35px;

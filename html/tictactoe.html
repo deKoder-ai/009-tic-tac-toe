@@ -1,0 +1,84 @@
+<!-- index.html template -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tictactoe.css">
+  <!-- research more about location in html for external scripts + async/defer? -->
+  <!-- defer loads script but prevents from running until html is parsed -->
+  <script src="../js/headerDropDown.js" defer></script>
+  <script src="../js/javascript.js" defer></script>
+  <title>FR33FL0W | Tic Tac Toe</title>
+</head>
+
+<body>
+  <header class="z-index-2">
+    <div id="logo-flex-container">
+        <a href="../index.html" id="header-logo">FR33FL0W</a>
+    </div>
+    <div class="header-links">
+      <a href="../html/tictactoe.html" id="link-1">Tic Tac Toe</a>
+      <a href="" id="link-2">About</a>
+      <a href="" id="link-3">Sign Up</a>
+      <a href="" id="link-4">Login</a>
+    </div>
+
+    <img src="../img/burger-2.svg" alt="Menu Icon" id="burger-menu">
+    <button id="burger-menu-btn"></button>
+    
+    <div id="header-dropdown-content">
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>
+        <a href="#">About</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+
+  </header>
+  
+  <!-- links -->
+  <!-- target blank opens in new tab - rel prevents new website from knowing where the referral came from -->
+  <!-- <a href="https://xyz.com" target="_blank" rel="noopener noreferrer">Write text here</a> -->
+
+
+  <div class="view image">
+    <div class="main">
+      <h1>Tic Tac Toe</h1>
+
+      <h2 class="flex-center">Current Player: <span id="current-player"></span></h2>
+      <div id="gameboard-wrapper" class="flex-center">
+        <div id="gameboard-grid">
+          <div id="board-01" class="game-square"></div>
+          <div id="board-02" class="game-square"></div>
+          <div id="board-03" class="game-square"></div>
+          <div id="board-04" class="game-square"></div>
+          <div id="board-05" class="game-square"></div>
+          <div id="board-06" class="game-square"></div>
+          <div id="board-07" class="game-square"></div>
+          <div id="board-08" class="game-square"></div>
+          <div id="board-09" class="game-square"></div>
+        </div>
+      </div>
+      <div class="flex-center">
+        <button id="reset-game-btn">Reset Game</button>
+      </div>
+    
+    
+    
+    
+    
+    
+    </div>
+  </div>
+
+  <footer class="z-index-2">
+    <p>©deKoder 2024</p>
+  </footer>
+  
+</body>
+
+</html>

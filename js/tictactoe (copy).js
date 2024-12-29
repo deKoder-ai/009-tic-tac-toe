@@ -17,8 +17,8 @@ const iGame = (function() {
     document.getElementById('status').innerText = `Current Player: ${player1}`
     return { player1, player2, sq };
 })();
-// game logic
-const playGame = (function() {
+
+function playGame() {
     const resetGame = (function () {
         function resetGame() {
             for (let i = 0; i < 9; i++) {
@@ -83,47 +83,103 @@ const playGame = (function() {
             element.style.color = 'var(--red)';
         }
     }
-    function sqClick(i) {
-        if (!iGame.sq[i]) {
-            iGame.sq[i] = player;
-            displayChoice(i, player);
-            player = switchPlayer(player);
-            checkWin(player);
-        }
-    }
     let player = iGame.player1;
     const body = document.querySelector('body');
     body.addEventListener('click', function(e) {
         if (!checkWin(player)) {
             switch (e.target.id) {
                 case 'board-01':
-                    sqClick(0);
+                    if (!iGame.sq[0]) {
+                        iGame.sq[0] = player;
+                        displayChoice(0, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-02':
-                    sqClick(1);
+                    if (!iGame.sq[1]) {
+                        iGame.sq[1] = player;
+                        displayChoice(1, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-03':
-                    sqClick(2);
+                    if (!iGame.sq[2]) {
+                        iGame.sq[2] = player;
+                        displayChoice(2, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-04':
-                    sqClick(3);
+                    if (!iGame.sq[3]) {
+                        iGame.sq[3] = player;
+                        displayChoice(3, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-05':
-                    sqClick(4);
+                    if (!iGame.sq[4]) {
+                        iGame.sq[4] = player;
+                        displayChoice(4, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-06':
-                    sqClick(5);
+                    if (!iGame.sq[5]) {
+                        iGame.sq[5] = player;
+                        displayChoice(5, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-07':
-                    sqClick(6);
+                    if (!iGame.sq[6]) {
+                        iGame.sq[6] = player;
+                        displayChoice(6, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-08':
-                    sqClick(7);
+                    if (!iGame.sq[7]) {
+                        iGame.sq[7] = player;
+                        displayChoice(7, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
                 case 'board-09':
-                    sqClick(8);
+                    if (!iGame.sq[8]) {
+                        iGame.sq[8] = player;
+                        displayChoice(8, player);
+                        player = switchPlayer(player);
+                        checkWin(player);
+                    }
                     break;
             }
         }
     })
-})();
+};
+
+playGame();
+
+
+
+
+
+
+
+
+// fill board with random choices
+// for (let i = 0; i < 9; i++) {
+//     if (Math.floor(Math.random() * 2) < 1) {
+//         boardElements[i].innerText = '0';
+//         boardElements[i].style.color = 'white';
+//     } else {
+//         boardElements[i].innerText = 'X';
+//     }
+// }

@@ -1,6 +1,13 @@
+@font-face {
+    font-family: adrip;
+    src: url(../fonts/adrip1.woff2);
+    font-weight: bold;
+    font-display: block;
+}
 :root {
     --board-lines-col: rgba(128, 128, 128, 0.548);
     --board-lines-style: solid;
+    --red: rgb(158, 40, 40);
 }
 .flex-center {
     display: flex;
@@ -19,8 +26,6 @@ h2 {
     width: 310px;
     height: 310px;
     display: grid;
-    /* grid-column: 1fr 1fr 1fr;
-    grid-row: 1fr 1fr 1fr; */
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
     margin: 20px;
 }
@@ -30,6 +35,12 @@ h2 {
 }
 .game-square {
     border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: adrip;
+    font-size: 6rem;
+    color: var(--red);
 }
 #board-04, #board-05, #board-06, #board-07, #board-09 {
     border-top: 2px var(--board-lines-style) var(--board-lines-col);

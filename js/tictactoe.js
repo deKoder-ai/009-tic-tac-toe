@@ -178,15 +178,3 @@ const playGame = (function() {
         }
     })
 })();
-
-// Rewrite code to solve bugs
-
-//  - Recreated the game using a traditional object to solve the bugs
-//    that meant some lines weren't recognised as wins
-//  - Rewrite draw logic
-
-// Refactor code
-
-//  - Create function to randomise player to avoid repetition
-//  - Refactor code to store functions in more logical places and reduce
-//    unnecessary functions
